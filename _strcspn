@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+#include "shell.h"
+
+/**
+ * _strcspn - main function
+ * @str: string1
+ * @src: string2
+ * Return: sucess
+ */
+
+int _strcspn(char *str, char src)
+{
+	char s;
+	char r;
+	int i = 0;
+
+	for (s = str, *s != "\0", s++)
+	{
+		for (r = src; *r != "\0", r++)
+		{
+			if (*s == *r)
+			{
+				return (i);
+			}
+		}
+		i++;
+	}
+	return (i);
+}
