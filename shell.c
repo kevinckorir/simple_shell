@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -51,12 +52,12 @@ int main()
 
         command[strcspn(command, "\n")] = '\0';
 
-        if (strlen(command) == 0)
+        if (my_strlen(command) == 0)
         {
             continue;
         }
 
-                token = strtok(command, " ");
+        token = strtok(command, " ");
         while (token != NULL && i < MAX_ARGUMENTS - 1)
         {
             arguments[i++] = token;

@@ -8,10 +8,10 @@
 #include <sys/wait.h>
 #include <string.h>
 
-void execute_command(char* command);
+/*void execute_command(char *command);*/
 void handle_exit();
 int my_strlen(char *s);
-char* parse_command(char* input);
-int search_command(char* command);
+char *parse_command(char *input);
+int search_command(char *command);
 void _execve(char *cmd);
 #endif /*MAIN_H*/
