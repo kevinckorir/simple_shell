@@ -11,12 +11,11 @@
 extern char **environ;
 
 void _execute(char *command, char **arguments);
-void handle_exit();
+void exit_shel();
 int my_strlen(char *s);
 char *parse_command(char *input);
 int search_command(char *command);
 void _execve(char *cmd, char **args);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
-
 
 #endif /*SHELL_H*/
