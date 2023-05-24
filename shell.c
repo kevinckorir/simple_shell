@@ -33,7 +33,7 @@ int main() {
         printf("$ ");
 
         if (fgets(command, sizeof(command), stdin) == NULL) {
-            printf("\nExit\n");
+            p
             break;
         }
 }
