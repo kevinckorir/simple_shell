@@ -6,8 +6,9 @@
 #include <string.h>
 
 #define MAX_COMMAND_LENGTH 100
+#define MAX_ARGUMENTS 10
 
-void execute_command(char *command)
+void execute_command(char *command, char **arguments)
 {
     pid_t pid;
     int status;
@@ -20,8 +21,7 @@ void execute_command(char *command)
     }
     else if (pid == 0)
     {
-        char *args[] = {command, NULL};
-        execvp(command, args);
+        execvp(command, arguments);
 
         perror("Error: Command not found");
         exit(EXIT_FAILURE);
@@ -35,6 +35,7 @@ void execute_command(char *command)
 int main()
 {
     char command[MAX_COMMAND_LENGTH];
+    char *arguments[MAX_ARGUMENTS];
 
     while (1)
     {
@@ -53,7 +54,18 @@ int main()
             continue;
         }
 
-        execute_command(command);
+        char *token;
+        int i = 0;
+
+        token = strtok(command, " ");
+        while (token != NULL && i < MAX_ARGUMENTS - 1)
+        {
+            arguments[i++] = token;
+            token = strtok(NULL, " ");
+        }
+        arguments[i] = NULL;
+
+        execute_command(arguments[0], arguments);
     }
 
     return 0;
