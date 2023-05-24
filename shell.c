@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -35,7 +34,8 @@ void execute_command(char *command, char **arguments)
 
 int main()
 {
-    char command[MAX_COMMAND_LENGTH];
+    char *command = NULL;
+    size_t command_length = 0;
     char *arguments[MAX_ARGUMENTS];
     char *token;
     int i = 0;
@@ -44,7 +44,7 @@ int main()
     {
         printf("$ ");
 
-        if (fgets(command, sizeof(command), stdin) == NULL)
+        if (getline(&command, &command_length, stdin) == -1)
         {
             printf("\nExit\n");
             break;
@@ -52,7 +52,7 @@ int main()
 
         command[strcspn(command, "\n")] = '\0';
 
-        if (my_strlen(command) == 0)
+        if (strlen(command) == 0)
         {
             continue;
         }
@@ -66,7 +66,11 @@ int main()
         arguments[i] = NULL;
 
         execute_command(arguments[0], arguments);
+
+        i = 0;
     }
+
+    free(command);
 
     return 0;
 }
