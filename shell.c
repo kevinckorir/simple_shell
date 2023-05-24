@@ -40,14 +40,9 @@ int main()
     {
         printf("$ ");
 
-<<<<<<< HEAD
-        if (fgets(command, sizeof(command), stdin) == NULL) {
-            p
-=======
         if (fgets(command, sizeof(command), stdin) == NULL)
         {
             printf("\nExit\n");
->>>>>>> 7e624e75a76ba5a9e42df8949e134016de682cc7
             break;
         }
 

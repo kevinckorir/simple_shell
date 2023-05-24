@@ -13,5 +13,5 @@ void handle_exit();
 int my_strlen(char *s);
 char* parse_command(char* input);
 int search_command(char* command);
-
+void _execve(char *cmd);
 #endif /*MAIN_H*/
