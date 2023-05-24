@@ -36,6 +36,8 @@ int main()
 {
     char command[MAX_COMMAND_LENGTH];
     char *arguments[MAX_ARGUMENTS];
+    char *token;
+    int i = 0;
 
     while (1)
     {
@@ -54,10 +56,7 @@ int main()
             continue;
         }
 
-        char *token;
-        int i = 0;
-
-        token = strtok(command, " ");
+                token = strtok(command, " ");
         while (token != NULL && i < MAX_ARGUMENTS - 1)
         {
             arguments[i++] = token;
