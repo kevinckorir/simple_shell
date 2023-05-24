@@ -1,3 +1,4 @@
+#include "shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,29 +9,7 @@
 #define MAX_COMMAND_LENGTH 100
 #define MAX_ARGUMENTS 10
 
-void execute_command(char *command, char **arguments)
-{
-    pid_t pid;
-    int status;
-
-    pid = fork();
-    if (pid == -1)
-    {
-        perror("Error: Forking process failed");
-        return;
-    }
-    else if (pid == 0)
-    {
-        execvp(command, arguments);
-
-        perror("Error: Command not found");
-        exit(EXIT_FAILURE);
-    }
-    else
-    {
-        waitpid(pid, &status, 0);
-    }
-}
+void _execute(char *command, char **arguments);
 
 int main()
 {
@@ -65,7 +44,7 @@ int main()
         }
         arguments[i] = NULL;
 
-        execute_command(arguments[0], arguments);
+        _execute(arguments[0], arguments);
 
         i = 0;
     }

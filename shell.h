@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 #include <string.h>
 
-/*void execute_command(char *command);*/
+void _execute(char *command, char **arguments);
 void handle_exit();
 int my_strlen(char *s);
 char *parse_command(char *input);
@@ -16,4 +16,4 @@ int search_command(char *command);
 void _execve(char *cmd, char **args);
 extern char **environ;
 
-#endif /*MAIN_H*/
+#endif /*SHELL_H*/
