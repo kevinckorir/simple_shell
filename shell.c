@@ -43,6 +43,10 @@ int main()
             token = strtok(NULL, " ");
         }
         arguments[i] = NULL;
+	if (strcmp(arguments[0], "exit") == 0)
+	{
+		exit_shel();
+	}
 
         _execute(arguments[0], arguments);
 
